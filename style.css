@@ -23,7 +23,7 @@ body {
     height: 100%;
 }
 
-[game-board]{
+#game-board{
     position: relative;
     border: 5px solid darkslategrey;
     height: 750px;
@@ -35,28 +35,19 @@ body {
 .mario{
     width: 50px;
     position: absolute;
-    bottom: 0px;
+    bottom: 3px;
     left: 45%;
 }
 
 
 .rua{
+    width: 40px;
     position: absolute;
-    top: 0;
-    height: 100%;
-    display: flex;
+    bottom: 2px;
+    left: 20%;
+
 }
 
-.area-rua{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.area-rua .lado-rua1{
-    display: flex;
-    padding-left: 30%;
-}
 
 
 .pontuacao{
@@ -65,4 +56,19 @@ body {
     right: 10px;
     font-family: Pixel;
     font-size: 30px;
+}
+
+.estrela{
+    position: absolute;
+    top: 10px;
+    right: 95%;
+}
+.estrelas{
+    position: absolute;
+    display: flex;
+    top: 10px;
+    right: 90%;
+    font-family: Pixel;
+    font-size: 30px;
+    color: yellow;
 }
