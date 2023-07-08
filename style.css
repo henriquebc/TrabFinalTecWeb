@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Pixel';
+    src: url('font/Pixel.ttf');
+}
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #0D262D;
+    color: #fff;
+    height: 100%;
+}
+
+[game-board]{
+    position: relative;
+    border: 5px solid darkslategrey;
+    height: 750px;
+    width: 1200px;
+    margin: 15px;
+    overflow: hidden; 
+}
+
+.mario{
+    width: 50px;
+    position: absolute;
+    bottom: 0px;
+    left: 45%;
+}
+
+
+.rua{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+}
+
+.area-rua{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.area-rua .lado-rua1{
+    display: flex;
+    padding-left: 30%;
+}
+
+
+.pontuacao{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 30px;
+}
