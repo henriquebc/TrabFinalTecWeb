@@ -31,31 +31,32 @@ function novoElemento (tagName, className) {
 
 var element = document.getElementById("game-board");
 
-// Cria um novo elemento <div>
-var rua = novoElemento('img','rua');
-rua.style.src = 'img/bloco.png';
+
+function gerarEstrela(){
+  var star = novoElemento('img','combust-estrela');
+  star.src = 'estrela.png';
+  star.style.width = 50 +'px';
 
   
-var posX = 80;
-var posY = 50;
-rua.style.right = posX + "%";
-rua.style.bottom = posY + "%";
+  var posX = 20;
+  var posY = 100;
+  star.style.right = posX + "%";
+  star.style.bottom = posY + "%";
 
-// Adiciona a <div> à <section>
-element.appendChild(rua);
+  // Adiciona a <div> à <section>
+  element.appendChild(star);
+}
 
+var setGerarEstrela = setInterval(gerarEstrela, 5000);
 
-//atualiza estrelas
-
-var estrela = document.querySelector(".estrelas")
-
-var quant = 10;
+var quant = 100;
 
 function atulizarEstrela(){
   quant--;
+  var estrela = document.querySelector(".estrelas")
   estrela.textContent = quant;
   if(quant<0){
-    alert("A cabaram as suas estrelas."+'--pontuação '+segundos)
+    alert("A cabaram as suas estrelas."+'--pontuação '+segundos+'estrelas capturadas')
     clearInterval(interEstrela)
     clearInterval(interCont)
     window.location.reload();
@@ -75,4 +76,19 @@ interCont = setInterval(atualizarContador, 1000);
 
 
 
+//atualizando caminho
 
+var rua = document.querySelector(".rua")
+var rua1 = document.querySelector(".rua1")
+var rua2 = document.querySelector(".rua2")
+var rua3 = document.querySelector(".rua3")
+var rua4 = document.querySelector(".rua4")
+var rua5 = document.querySelector(".rua5")
+var rua6 = document.querySelector(".rua6")
+var rua7 = document.querySelector(".rua7")
+var rua8 = document.querySelector(".rua8")
+var rua9 = document.querySelector(".rua9")
+
+//combustivel
+
+var estrela = document.document.querySelector(".combust-estrela");
