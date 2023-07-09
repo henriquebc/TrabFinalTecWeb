@@ -52,10 +52,7 @@ body {
     z-index: 100;
 }
 .inimigo{
-    width: 50px;
     position: absolute;
-    bottom: 3px;
-    left: 45%;
     animation: move-inimigo 2s linear infinite;
 }
 @keyframes move-inimigo{
@@ -67,9 +64,75 @@ body {
     to{
         width: 53px;
         height: 50px;
-        bottom: -40%;
+        bottom: -50px;
     }
 }
+.pontuacao{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 30px;
+}
+
+.img-estrela{
+    position: absolute;
+    top: 10px;
+    right: 95%;
+}
+.quant-estrelas{
+    position: absolute;
+    display: flex;
+    top: 10px;
+    right: 90%;
+    font-family: Pixel;
+    font-size: 30px;
+    color: yellow;
+    
+}
+.combust-estrela{
+    position: absolute;
+    border: none;
+    left: 50%;
+    animation: move-estrela 2s linear infinite;
+}
+
+@keyframes move-estrela{
+    from{
+        width: 30px;
+        height: 30px;
+        bottom: 100%;
+    }
+    to{
+        width: 40px;
+        height: 40px;
+        bottom: -40px;
+    }
+}
+
+.clouds{
+    position: absolute;
+    width: 400px;
+    animation: moveclouds 20s infinite linear;
+}
+
+
+@keyframes moveclouds{
+    from{
+        right: -400px;
+    }
+    to{
+        right: 100%;
+    }
+
+}
+.cogumelo{
+    width:2%;
+    position: absolute;
+    left: 45%;
+    z-index: 100;
+}
+
 
 .rua{
     width: 60px;
@@ -143,64 +206,4 @@ body {
     position: absolute;
     bottom: 152px;
     left: calc(62%);
-}
-
-.pontuacao{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-family: Pixel;
-    font-size: 30px;
-}
-
-.img-estrela{
-    position: absolute;
-    top: 10px;
-    right: 95%;
-}
-.quant-estrelas{
-    position: absolute;
-    display: flex;
-    top: 10px;
-    right: 90%;
-    font-family: Pixel;
-    font-size: 30px;
-    color: yellow;
-    
-}
-.combust-estrela{
-    position: absolute;
-    border: none;
-    left: 50%;
-    animation: move-estrela 2s linear infinite;
-}
-
-@keyframes move-estrela{
-    from{
-        width: 30px;
-        height: 30px;
-        bottom: 100%;
-    }
-    to{
-        width: 40px;
-        height: 40px;
-        bottom: -40px;
-    }
-}
-
-.clouds{
-    position: absolute;
-    width: 400px;
-    animation: moveclouds 20s infinite linear;
-}
-
-
-@keyframes moveclouds{
-    from{
-        right: -400px;
-    }
-    to{
-        right: 100%;
-    }
-
 }
