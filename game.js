@@ -95,6 +95,9 @@ const loop = setInterval(() => {
 }, 10);
 
 
+
+
+
 //decrementa em 1 a cada segundo o valor da estrela e atuliza tanto a quantidade de estrelas como quantidade de pontos e verifica se a quantidade de estrelas acabaram para exibir o fim de jogo
 function atualizarEstrela() {
   estrelaRestante--;
