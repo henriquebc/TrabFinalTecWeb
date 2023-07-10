@@ -1,11 +1,10 @@
-//movimentação personagem
-// armazena a quantidade de estrtelas
+// armazena a quantidade de estrtelas que servirão de combustível
 var estrelaRestante = 10;
-//armazena o numero de estrelas capturadas
+//armazena o numero de estrelas capturadas para exibir no fim do jogo
 var quantEstrelas = 0;
-//armazena quantidade de segundos passados/pontuação
+//armazena quantidade de segundos passados para atualizar a pontuação
 var segundos = 0;
-
+//armazena a dic com ID kart na variável kart
 var kart = document.getElementById("kart");
 // Posição inicial do kart
 var posiX = 45;
@@ -26,32 +25,30 @@ function moveKart(event) {
 
 // Adiciona um listener para as teclas pressionadas
 document.addEventListener("keydown", moveKart);
-
-//função ue cria um novo elemento
-function novoElemento(tagName, className) {
-  const elemento = document.createElement(tagName);
-  elemento.className = className;
-  return elemento;
-}
-
-//gerar as posições aleatorias da estrela e do carro inimigo
+//acessar as classes que representam a estrela que deve ser pega pelo kart e o kart inimigo
 var combusEstrela = document.querySelector(".combust-estrela");
 var inimigo = document.querySelector(".inimigo");
+//gerar as posições aleatorias da estrela e do carro inimigo
 function gerarPosi() {
   var posEX 
-  var posIX
+  var posiX
+  
   do{
+    //o intervalo de 60 a 32 representa a porsentagem que será atribuido ao left para serem geradas posições entre os blocos
     posEX = Math.floor(Math.random() * (60 - 32 + 1)) + 32;
     posIX = Math.floor(Math.random() * (60 - 32 + 1)) + 32;
 
-  }while(Math.abs(posIX-posEX)<10)
-  
+  }//para evitar que sejam geradas duas posições iguais e garantir que tenham uma diferença de 10% uma da outra
+  while(Math.abs(posIX-posEX)<10)
+  //atribui as posições as classes  ".combust-estrela" e ".inimigo"
   combusEstrela.style.left = posEX + "%";
   inimigo.style.left = posIX  + "%";
 }
+//assim que a pagina for carregada as img inimigo e  estrela já iram inicar com posição aleatória
 gerarPosi()
-//adiiciona 5 na quantidade atual de estrelas
-var geraEstrela = setInterval(gerarPosi, 4000);
+//como a animação de descida da .combust-estrela e ".inimigo" são executadas acada 2s as suas posições devem altera no mesmo peíodo
+var geraEstrela = setInterval(gerarPosi, 2000);
+//adicion aestrela
 function AdiconarEstrela(){
   estrelaRestante += 5;
 }
@@ -63,9 +60,18 @@ function AdiconarContadorEstrela(){
 function AdiconarPontuacao(){
   segundos++;
 }
+//caso colida com inimigo
+function inimigoColide(){
+  segundos-=5;
+}
+//caso ultrapasse o inimigo
+function inimigoUltrapassa(){
+  segundos+=5;
+}
 
 
-//verificar se houve colisão com a estrela ou carro inimigo
+
+//verificar se houve colisão com a estrela ou carro inimigo acada 10 milisegundos
 const loop = setInterval(() => {
   var posXK = Math.floor(kart.offsetLeft);
   var posYK = Math.floor(+window.getComputedStyle(kart).bottom.replace('px', ''));
@@ -73,17 +79,17 @@ const loop = setInterval(() => {
   var posYE = Math.floor(+window.getComputedStyle(combusEstrela).bottom.replace('px', ''));
   var posXI = Math.floor(inimigo.offsetLeft);
   var posYI = Math.floor(+window.getComputedStyle(inimigo).bottom.replace('px', ''));
-  if (Math.abs(Math.abs(posXK)-posXE)<=10 && posYK == posYE) {
+  //se a estrela estiver na mesma posição do kart
+  if (posXK == posXE && posYK == posYE) {
     AdiconarEstrela()
     AdiconarContadorEstrela()
   }
-  console.log(posYI==0)
+  //se o inimigo estiver na mesma posição do kart
   if(posXK==posXE && posYK == posYI){
-    segundos-=5;
-    
-  }
-  if(posYI==-50){
-    segundos+=5;
+    inimigoColide()
+    //caso contrário verifica se o inimigo parou de ser exibido na div game-board que é quando ele está na posição -50 = -seu próprio height
+  }else if(posYI==-50){
+    inimigoUltrapassa()
   }
 
 }, 10);
@@ -99,13 +105,14 @@ function atualizarEstrela() {
       "Acabaram as suas estrelas." +
         " --pontuação: " +
         segundos +
-        "----estrelas capturadas:" +
+        "---estrelas capturadas: " +
         quantEstrelas
     );
-    //limpa os intervalos para que as contagens possao ser atualizadas
+    //limpa os intervalos pois emquanto o alert era executado  essas funções ainda eram executdas, o que aumentava a pontuação e deixava a quntidade de estrelas negativas
     clearInterval(interEstrela);
     clearInterval(interCont);
     clearInterval(geraEstrela);
+    //recarrrega a pagina
     window.location.reload();
   }
 }
@@ -124,7 +131,7 @@ function ExibPontuacao(){
 
 interEstrela = setInterval(atualizarEstrela, 1000);
 interCont = setInterval(atualizarContador, 1000);
-interPont = setInterval(ExibPontuacao, 10);
+interPont = setInterval(ExibPontuacao, 1);
 
 
 //atualizando caminho

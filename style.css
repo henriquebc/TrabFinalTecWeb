@@ -53,9 +53,10 @@ body {
 }
 .inimigo{
     position: absolute;
-    animation: move-inimigo 2s linear infinite;
+    left: 30%;
+    animation: move-inimigo 2s infinite linear;/*realiza a animação durante 2s de forma infinita e animação vai o correr de acordo com a variação do tempo*/
 }
-@keyframes move-inimigo{
+@keyframes move-inimigo{/*animação fara com que o inimigo se mova na horizontal com base no bottom*/
     from{
         width: 30px;
         height: 30px;
@@ -94,8 +95,9 @@ body {
     position: absolute;
     border: none;
     left: 50%;
-    animation: move-estrela 2s linear infinite;
+    animation: move-estrela 2s infinite linear;
 }
+/*realixa a movimentação das estrelas que servirão como combustível com base na variação do atributo bottom*/
 
 @keyframes move-estrela{
     from{
@@ -116,7 +118,7 @@ body {
     animation: moveclouds 20s infinite linear;
 }
 
-
+/*vai animar a nuvem para que ela se movimente  na div ceu*/
 @keyframes moveclouds{
     from{
         right: -400px;
@@ -126,14 +128,8 @@ body {
     }
 
 }
-.cogumelo{
-    width:2%;
-    position: absolute;
-    left: 45%;
-    z-index: 100;
-}
 
-
+/*no comoeço tentamos realizar a movimnetação da estrada por meio dos blocos mas cabou se torando inviável, deu 10 blocos :(*/
 .rua{
     width: 60px;
     height: 50px;
