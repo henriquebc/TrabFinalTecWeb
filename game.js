@@ -4,7 +4,7 @@ var estrelaRestante = 10;
 var quantEstrelas = 0;
 //armazena quantidade de segundos passados para atualizar a pontuação
 var segundos = 0;
-//armazena a dic com ID kart na variável kart
+//armazena a div com ID kart na variável kart
 var kart = document.getElementById("kart");
 // Posição inicial do kart
 var posiX = 45;
@@ -36,13 +36,13 @@ function gerarPosi() {
   do{
     //o intervalo de 60 a 32 representa a porsentagem que será atribuido ao left para serem geradas posições entre os blocos
     posEX = Math.floor(Math.random() * (60 - 32 + 1)) + 32;
-    posIX = Math.floor(Math.random() * (60 - 32 + 1)) + 32;
+    posiX = Math.floor(Math.random() * (60 - 32 + 1)) + 32;
 
   }//para evitar que sejam geradas duas posições iguais e garantir que tenham uma diferença de 10% uma da outra
-  while(Math.abs(posIX-posEX)<10)
+  while(Math.abs(posiX-posEX)<10)
   //atribui as posições as classes  ".combust-estrela" e ".inimigo"
   combusEstrela.style.left = posEX + "%";
-  inimigo.style.left = posIX  + "%";
+  inimigo.style.left = posiX  + "%";
 }
 //assim que a pagina for carregada as img inimigo e  estrela já iram inicar com posição aleatória
 gerarPosi()
@@ -85,10 +85,10 @@ const loop = setInterval(() => {
     AdiconarContadorEstrela()
   }
   //se o inimigo estiver na mesma posição do kart
-  if(posXK==posXE && posYK == posYI){
+  if(posXK==posXI && posYK == posYI){
     inimigoColide()
-    //caso contrário verifica se o inimigo parou de ser exibido na div game-board que é quando ele está na posição -50 = -seu próprio height
-  }else if(posYI==-50){
+    //caso contrário verifica se o inimigo parou de ser exibido na div game-board que é quando ele está na posição -40 = -seu próprio height
+  }else  if(posYI==-40){
     inimigoUltrapassa()
   }
 
