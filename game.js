@@ -73,6 +73,7 @@ function inimigoUltrapassa(){
 
 //verificar se houve colisão com a estrela ou carro inimigo acada 10 milisegundos
 const loop = setInterval(() => {
+  var cont = 0
   var posXK = Math.floor(kart.offsetLeft);
   var posYK = Math.floor(+window.getComputedStyle(kart).bottom.replace('px', ''));
   var posXE = Math.floor(combusEstrela.offsetLeft);
@@ -86,13 +87,14 @@ const loop = setInterval(() => {
   }
   //se o inimigo estiver na mesma posição do kart
   if(posXK==posXI && posYK == posYI){
+    cont = 1
     inimigoColide()
     //caso contrário verifica se o inimigo parou de ser exibido na div game-board que é quando ele está na posição -40 = -seu próprio height
-  }else  if(posYI==-40){
+  }if(posYI == -20 && cont == 0){
     inimigoUltrapassa()
   }
 
-}, 10);
+}, 15);
 
 
 
