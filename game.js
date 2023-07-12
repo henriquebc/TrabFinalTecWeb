@@ -138,18 +138,74 @@ interEstrela = setInterval(atualizarEstrela, 1000);
 interCont = setInterval(atualizarContador, 1000);
 interPont = setInterval(ExibPontuacao, 1);
 
+function novoElemento(tagName, className) {
+  const elemento = document.createElement(tagName)
+  elemento.className = className
+  return elemento
+}
 
-//atualizando caminho
+function Inimigo(){
+  this.inimigo = novoElemento(img,inimigo);
+  this.inimigo.src = 'img/luid.png'
+}
 
-/*
-var rua = document.querySelector(".rua");
-var rua1 = document.querySelector(".rua1");
-var rua2 = document.querySelector(".rua2");
-var rua3 = document.querySelector(".rua3");
-var rua4 = document.querySelector(".rua4");
-var rua5 = document.querySelector(".rua5");
-var rua6 = document.querySelector(".rua6");
-var rua7 = document.querySelector(".rua7");
-var rua8 = document.querySelector(".rua8");
-var rua9 = document.querySelector(".rua9");
-*/
+function QuantEstrelas(){
+  this.quantEstrela = estrelas =>{
+    document.getElementById('estrelas').innerHTML = estrelas;
+  }
+  this.quantEstrela = 10;
+}
+function QuantPontos(){
+  this.quantPontos = ponto =>{
+    document.getElementById('pontuacao').innerHTML = ponto;
+  }
+  this.quantPontos = 0;
+}
+function MoveEstrela(x, y, velocidade) {
+  this.star = document.createElement("img");
+  this.star.src = "img/estrela.png";
+  this.star.style.position = "absolute";
+  this.star.style.left = x + "%";
+  this.star.style.bottom = y + "px";
+  this.velocidade = velocidade;
+  var gameBoard = document.getElementById("game-board");
+  gameBoard.appendChild(this.star);
+
+  this.mover = function() {
+    var self = this;
+    setInterval(function() {
+      var novaPosicaoY = parseInt(self.star.style.bottom) - self.velocidade;
+      if(novaPosicaoY ==50){
+        divElement.parentNode.removeChild(this);
+      }
+      self.star.style.bottom = novaPosicaoY + "px";
+    }, 100);
+  };
+}
+function MoveInimigo(x, y, velocidade) {
+  this.inim = document.createElement("img");
+  this.inim.src = "img/luid.png";
+  this.inim.style.position = "absolute";
+  this.inim.style.left = x + "%";
+  this.inim.style.bottom = y + "%";
+  this.velocidade = velocidade;
+  var gameBoard = document.getElementById("game-board");
+  gameBoard.appendChild(this.inim);
+
+  this.mover = function() {
+    var self = this;
+    setInterval(function() {
+      var novaPosicaoY = parseInt(self.inim.style.bottom) - self.velocidade;
+      if(novaPosicaoY ==50){
+        divElement.parentNode.removeChild(this);
+      }
+      self.inim.style.bottom = novaPosicaoY + "%";
+    }, 200);
+  };
+}
+
+var moveEstrela = new MoveEstrela(30, 100, 5);
+moveEstrela.mover();
+
+var moveInimigo = new MoveInimigo(40, 100, 5);
+moveInimigo.mover();

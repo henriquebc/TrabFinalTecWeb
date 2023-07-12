@@ -42,6 +42,23 @@ body {
     background: linear-gradient(rgb(5, 136, 5),rgb(5, 104, 5));
 }
 
+.menu{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 30px;
+}
+.botao{
+    width: 10%;
+    border: 2px solid black ;
+    border-radius: 10px;
+    margin: 3px;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(148, 145, 0);
+    background: #dedada;
+}
 
 .mario{
     width: 40px;
