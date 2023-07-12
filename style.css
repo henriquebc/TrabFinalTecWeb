@@ -71,20 +71,11 @@ body {
 .inimigo{
     position: absolute;
     left: 30%;
-    animation: move-inimigo 2s infinite linear;/*realiza a animação durante 2s de forma infinita e animação vai o correr de acordo com a variação do tempo*/
+    width: 40px;
+    height: 40px;
+    
 }
-@keyframes move-inimigo{/*animação fara com que o inimigo se mova na horizontal com base no bottom*/
-    from{
-        width: 30px;
-        height: 30px;
-        bottom: 100%;
-    }
-    to{
-        width: 40px;
-        height: 40px;
-        bottom: -40px;
-    }
-}
+
 .pontuacao{
     position: absolute;
     top: 10px;
